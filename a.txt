@@ -1,0 +1,360 @@
+cek error itu dari sini,
+kalo mau tau contoh error, gini
+itu error nya 500 dia
+server yg error
+
+error = C:\xampp\htdocs\wis\app\Http\Controllers\LeaveController.php line 135
+karna titik koma nya tak ada, dia $return nya ga kebaca
+berarti di line atasnya yg salah
+
+itu pada saat dia di loading
+skrg kita coba pada saat dia sudah slesai loading, tapi kita mau load yg lain
+titik koma nya aku hilangkan
+hasil nya sama kan ?
+ok
+kalau ada fungsi yg ga jalan, itu error berarti
+kan modal nya ga jalan itu dia sangkut warna abu aja
+gitu om
+yg mudah
+kalo error yg lebih jauh lagi kaya nya om perlu coba2 dulu dan hapalin error code
+biasa nya mulai dari error 4xx sampai 5xx
+kalo dia normal biasa 3xx atau 2xx
+400 ,401, 404
+500, 501, 503, 504
+207, 204, 212, 224
+301, 302
+ itu yg umum om buat begginer
+ yg om dah tau itu baru 200 dan 500
+ skrg 404 = not found, tak ada file/function/url
+ url nya ga ketemu, itu ada salah di routes nya atau controller atau view
+ inti nya url itu pada saat dia di panggilm itu tak terdaftar
+ skrg 302 = found but redirect, need authentication = artinya url ketemu, tapi dia ternyata di larikan ke url lain untuk otentikasi/login
+ 301 = moved permanent = url nya otomatis langsung berpindah karna ada .htaccess yang membuat dia rewrite URL
+
+ 402 = forbidden/dilarang = biasa nya kaya kita akses ke webserver yg bisa di injeksi
+untuk kasus ini biasa di gunakan developer tingkat menengah ke atas, bahkan cracker/hacker untuk ngeretas webserver
+
+ kita punya url itu
+ url itu ada bbrp kategori pembagian, kaya IP Address = 192.168.1.xxx yg xxx adalah host nya dan remote address nya adalah 192.168.1
+ kalo url :
+ - protocol = https
+ - separator = :/
+ - base url = apekesah.dev.batam.go.id
+ - uri = html/assets/images/logo.png
+
+ kalo digabung, dia akan jadi https://apekesah.dev.batam.go.id/html/assets/images/logo.png
+ nah yg masuk akal nya itu
+ URI adalah directory yg ada didalam webserver yang ngatur kinerja assets
+ kalo kita punya URI di atas, berarti struktur direktori nya adalah =
+ - direktori project
+   - direktori html
+     - direktori assets
+       - direktori images
+         - file logo.png
+         - file lainnya
+
+ berarti ga mungkin ga ada file lain nya di dalam direktori html kan ? pasti ada banyak.
+ gimana cara tau nya ?
+ nah itu keliatan semua file nya, berarti itu bisa di tembus dengan metode directory transfersal attack
+ untuk ngetrace struktur direktori
+ skrg kita mau munculkan error untuk 402 yg artinya forbidden
+ ok
+ itu permission nya dia di blok sama webserver, berarti DTA ga tembus.
+ dan error nya ternyata 403 bukan 402
+ itu orang tengah yg tau om
+ tapi buat om belajar kan bisa dah mantap di kampung2 itu
+ itu set permissions dimana om?
+ terminal linux
+ chmod -R xxx direktori
+ xxx = permission nya
+ x pertama = user
+ x kedua group
+
+ x ketiga lupa
+ nilai nya maks 7
+ artinya kalo 7 itu, dia bisa write, read, execute
+ biasa yg 7 itu di group aja, di user itu read dan write
+ klo windows?
+ ga bisa om, windows itu dari
+ kode nya itu kalo tutorial harus paham dulu di binnary
+ yang 0 sama 1
+ dia kode nya cuma rwx-
+ r = read
+ w= write
+ x = execute
+ - = null
+ read itu 1
+ w 2
+ x 4
+ jadi kalo
+ rwx = 7
+ --- = 0
+ r-x = 5
+ r-- = 1
+ itu biasa sysadmin yg paham om, programmer hanya cukup tau basic aja nanti nya ketika error atau ga terbaca di server, sementara di localhost jalan normal
+ karna localhost buat para pengguna developer yg di open semua nya, 
+ kalo webserver harus di batasi untuk kekuatan security nya 
+ oh ok
+ trus q mau belajar cek error validator om
+ lanjut om
+ kemarin bikin insert tapi balik terus, gk tau cara ceknya
+ script nya mana
+trus q mau belajar cek error validator om
+ lanjut om
+ kemarin bikin insert tapi balik terus, gk tau cara ceknya
+ script nya mana om
+ kalo yg ada di dalam kolom readonly, ga usah di rules om
+ tapi yg di rules yg bisa di isi aja
+ kolom yg ada = start, leave, total, back, remain
+ nah yg ada di rules itu cuma 5 biji itu aja om
+ itu ada 8 total nya
+ leave category itu harusnya ada di dalam URL
+ jadi dia di get by leave categori
+ jatuh nya nanti kaya edit, tapi dia sebenarnya insert, cuma dia memanipulasi data aja = DML
+ di controller nanti jadi nya kaya gini
+ user id di ambil dari yg login, ga perlu dia ambil dari form
+ periode dia ambil dari tahun skrg, ga perlu ambil dari field
+ leave category di ambil dari get nya
+ dah kelar
+ tapi itu perlu ditampilin pas user mau insert om
+ magkaa apa om di tampilin
+ oke skrg gini, aku kasi contoh ya
+gitu kan asli nya ?
+iya
+
+itu jadi 2099, dan itu terinjeksi om
+hmm iya
+jadi bagusnya gimana om?
+jadi kaya yg aku buat om
+om ak off dulu di panggil ak ntar lanjut lg
+
+klo pake first ntar ada data lagi manggilnya gimana om?
+		maksudnya ntar ada category lain di bawah itu nantinya
+		di buat dynamic om, masukin di parameter
+		route, sama di controller
+		'.$id.'
+		di parameterkan dynamic
+		oalah, lain lagi om ntar logicnya,
+		sementara itu yg tadi dah bener
+		laisno aolm
+		lain om, pasti berubah semua nya, makanya ak juga agak bingung tadi mau buat digimanain
+		tapi ntar logika nya di benerin lagi om, di buat simple aja, jangan di buat ribet2
+		ini yg sekarang gk bisa disimplekan ya?
+		bisa om, tapi perlu waktu, ya flowchart paling gak harus ada
+		coba om, akses sikesda.dev.batam.go.id
+		om login pakai 
+		aldio
+		123456
+		om utak atik disana
+		itu ak programmer yg buat itu sendiri tanpa ada yg lain.
+		itu koneksi 184 tabel total nya dan semua terkoneksi antara tabel 1 sama yg lain.
+		itu banyak level user, level aplication, level database.
+		lebih complicated lagi sebener ny, tapi jangan di buat ribet om haha
+		ok, ntar q coba om.
+		
+		inti nya aplikasi itu menjalankan sistem di puskesmas/rumah sakit.
+		mulai dari pendaftaran pasien, penanganan pasien, sampai ke akunting kasir, pengambilan resep, bridging ke BPJS dan RSUD, dll nya lagi
+		beh, ini aja q gk paham yg simple om
+		coba om liat aja di wa gambar nya, itu data dummy aaja perlu 1 juta row
+		jadi yg q buat ini logicnya salah ya om?
+		banyak salah nya om, tapi di aplikasi semua nya bisa di akalin.
+		makanya ini query nya kan aku akalin yg penting alur dah bener dulu
+		tapi seharus nya ga kaya gini, harus nya lebih kompleks lagi dan bisa multiple data 
+
+		tapi om bisa la benerin nya ntar sambil berjalan.
+		kalo logika nya udah mateng,
+		ntar ketahuan logika penuh ketika aplikasi ini dah di pakai dulu.
+		pasti kebayang apa aja yg kurang dan apa aja yg bisa di buat lebih simple
+		ok,
+		sementara yg tadi dah bener om
+		ntar ak benerin ulang 
+		dah om
+		ok sementara gini dulu ntar kan ketahuan logic simplenya gimana om
+		oke siap
+		coba om bayangin aja kaya gini
+		1 negara punya banyak provinsi
+		1 provinsi punya banyak kota
+		1 kota punya banyak kecamatan
+		1 kecamatan punya banyak kelurahan
+
+		gimana kalo 1 negara punya banyak kecamatan ?
+		itu yg om pikir kan logika nya dari mana buat nya pertama
+		inti kepala nya di negara, cuma 1 negara
+		kalo om punya nya 1 user, banyak leave category, punya banyak leave category
+		tapi 1 init anual
+		nantinya init_annual gk dipake lagi om,
+		cuma buat category 1 aja itu,
+		yg lain punya init sendiri 
+		nah malah lebih mudah lagi logika nya kalo kaya gitu om
+		berarti 1 user punya banyak categori
+		1 category banyak leave
+		jadi 1 category = 1 init_annual
+		kalo skrg kan bukan gitu om
+		lebih mudah kaya gitu buat nya 
+		iya besok q coba konsul sama bos
+		skrg gitu aja dulu om
+		oke sippp
+		dc ya om
+		iya makasih banyak om
+		sip sama2 om
+		ntar kabari aja om
+		ok siaap
+
+$sempak = (array) [
+            'a' => 'A',
+            'b' => 'B',
+            'c' => 'C'
+        ];
+$sempak1 = (object) [
+            'a' => 'A',
+            'b' => 'B',
+            'c' => 'C'
+        ];
+        $a = 0;
+        $b = '0';
+        /*apa beda a sama b ?
+        a integer, b string?
+        lagi ?
+        a objek, b array?
+        tak la om
+        cara validate nya yg beda
+        contoh nya */
+        if ($a == $b) { // jika a nilai nya sama b
+            return 'benar';
+        } else {
+            return 'salah';
+        }//benar
+        1000x == waktu 0.080 detik
+        itu performance engine benchmark namanya om, itu bakal om pakai pada saat om loading data lebih dari 1000 rows
+        bukan cuma itu, perbedaan for dan foreach, echo sama print sama return juga ada beda nya, dan banyak lagi
+        bahkan 
+        $a = 'a';
+        $a = "a";
+        $a = '';
+        $a = "";
+        ini juga beda waktu nya
+        itu pasti setelah deploy om perlu itu untuk benchmarking, programmer pasti harus tau itu
+        baru tau aku om, pantesan kadang sama bisa tapi q gk tau bedanya
+        ternyata klo uda banyak baru nampak nantinya
+        trus ada lagi.
+        hindari namanya looping query
+        contoh
+        if (nilai input lebih dari 5) { //jika input lebih dari 5, input = 1000
+            foreach (input as $key => $value) { // setiap input, sebagai key dan value
+                Model::insert(input); // ulang sebanyak input, ini bakalan jalan sebanyak 1000x
+                // looping query, om lanjut besok ya
+                oke om sip.
+                di pahami lagi om, ga ada yg ngajarin looping query dan benchmariking
+                ini banyak programmer yg ga tau dan banyak yg sok tau.
+                tapi ya itu bagus dan riskan
+                iya om, yg ini biarin aja 
+                biar besok q coba pahami dulu
+                oke om, dc ya ok 
+            }
+        }
+        ini udah danger, karna CPU yg di makan, engine bisa jebol, motherboard server bisa jebol.
+        kalo di trace, apa masalahnya, programmer bisa kena
+        di suruh ganti ? 100jt ? ga cukup bahkan lebih dari 5m untuk infrastruktur gitu paling murah
+        ngeri itu maksudnya loop terus?
+        misal, input nya ada 1000
+        brp x query berjalan ?
+        1000 kan ?
+        1x insert, itu ada estimasi server memakan CPU brp dan memory brp.
+        kalo 1000x ?
+        CPU nya cuma 2core, memory 2gb ?
+        1x makan biasa nya sekuta 200mb/100mb
+        total nya bisa 200.000mb CPU dan 100.000 memory 
+
+        ada emang 100GB RAM Server ? jarang om
+        tak ada om, max itu gen skrg yg baru 2018 itu 64 maks.
+        itu aja yg dewa, lah kalo yg kaleng atau plastik mah meleleh om
+        yg loop query itu maksudnya gimana om?
+
+        // benchmarking | eksekusi timming nya lebih lambat
+        // ini output nya apa ?
+        // salah
+
+        if ($a === $b) { // jika a nilai nya sama b AND jika a tipe nya sama b
+            return 'benar';
+        } else {
+            return 'salah';
+        }//salah
+        // benchmarking | eksekusi timming nya lebih cepat
+        1000x if else kalo operator nya === cuma makan waktu 0.045 detik
+        // ini output nya apa ?
+        // benar?
+        // kebalik
+
+        // return (array) $sempak['a'];
+        // return (object) $sempak->a;
+        // array itu panggil nya pakai [key]
+        // object itu panggil nya pakai ->key
+        /*object ga akan bisa di baca sama html, cuma dia format nya JSON = JavaScript Object
+        sama kan om ?
+        berarti harus array dulu sebelum dipanggil ke html?
+        bukan om, tergantung
+        gini*/
+        // return 'array = '.
+        // $sempak['a'] // cara panggil array
+        // .'<br>object = '.
+        // $sempak1->a; // cara panggil object
+        // key nya sama, beda nya cara panggil nya , 
+        //object lebih secure, karna dia dari encapsulate, yg tadi kenapa gk bisa dipanggil ya om?
+        // beda cara panggil nya om
+        // tadi yg om panggil tu $select->remainannual
+        // harus nya $select['remainannual']
+        // tapi skrg aku ubah ke object semua nya pake collect?
+        // mau collect(Hasil select) atau (object) hasil select itu sama aja om
+        // kalo collect, itu instance dari laravel object
+        // kalo (object) itu instance dari php
+        // berarti tadi salah cara panggilnya ya?
+        // eh iya
+        // tapi harusnya semua nya itu basis nya object, bukan array
+        // kalo OOP dah main di object om, ga boleh dari array karna array itu datanya kebuka/public/ga secure
+        // jadi yg  array ganti ke object semua ya bagusnya?
+        // tergantung kebutuhan om
+        // kalo mau di kirim ke instance lain, itu pakai object
+        // tapi kalo di pakai di dalam situ aja ya pakai array ga masalah, pakai object ga masalah juga
+        // tidak di harus kan om, tapi itu tergantung aja
+        // ambil konsep konsistensi aja om
+        // programmer harus tau konsistensi dalam pemrograman
+        // contoh nya
+        // itu yg aku lingkari ga konsisten
+        // coba kenapa ?
+        // karena pake hidden?
+        // karna bahasa nya tak jelas om
+        // om pakai base language nya apa, tapi ada kecampur apa
+        // yg datatables itu?
+        // itu basaha indonesia, tapi om yg lain bahasa inggris
+        // oalah
+        // itu ga konsisten, karna kenapa harus banyak bahasa di sana, coba knapa ga di buat 1 bahasa aja ?
+        // iya belum q ubah om
+        // berarti belum konsisten kan ?
+        // coba semua mulai dari awal di konsisten kan om, kalo mau array ya array aja, kalo object ya object semua
+        // tpi kalo laravel semua nya harus object
+        // ok
+        // jadi dah paham kan konsep awal nya gmna, beda antara tipe data walaupun output nya sama, 
+        // sama satu lagi
+
+        // array itu pakai [], kalo object itu {}
+    	// ])
+    	// ->first();
+        // if (!$select) {
+        //     $select = Auth::user()->init_annual ?: 0;
+        // }
+        // return $select;
+        /*harus nya apa yg keluar om ?init annual om
+        om, sqlnya bisa jalan, tapi laravel error tadi
+        pake 3 om, kan yg login user 3
+        kalo 999999999 knapa null om ?
+        initnya emang null
+        jangan klik di tab itu om, di tab 3 aja kalo mau liat data
+        karna output dia di DB:: Object itu jadi array, jadi harus di buat ke collection/object dulu, makanya dia not found/ yg tadi 
+        pake collect itu ta?
+        $select = $select1
+        tipe data nya yg beda dan jenis nya
+        yg $select itu array di convert pakai helper collect
+        yg $select1 di force ke object dari php
+        */
+		
+    */
